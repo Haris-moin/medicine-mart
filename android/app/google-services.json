@@ -1,0 +1,82 @@
+{
+  "project_info": {
+    "project_number": "791536749284",
+    "project_id": "medi-mart-afef0",
+    "storage_bucket": "medi-mart-afef0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:791536749284:android:54213a84377c062fa1faf1",
+        "android_client_info": {
+          "package_name": "com.authform"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "791536749284-ansg0o1b07d9t9asl4oj3t8t1of9ekfe.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC93DFEBVoKz5MsLuY4FYheV5G8KrRNUkk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "791536749284-ansg0o1b07d9t9asl4oj3t8t1of9ekfe.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "791536749284-83vdo1abrgqa0bv9odaro3bc0gaq7j95.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.authform"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:791536749284:android:62a946be567c960fa1faf1",
+        "android_client_info": {
+          "package_name": "com.medimart"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "791536749284-ansg0o1b07d9t9asl4oj3t8t1of9ekfe.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC93DFEBVoKz5MsLuY4FYheV5G8KrRNUkk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "791536749284-ansg0o1b07d9t9asl4oj3t8t1of9ekfe.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "791536749284-83vdo1abrgqa0bv9odaro3bc0gaq7j95.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.authform"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
