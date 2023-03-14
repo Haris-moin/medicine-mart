@@ -14,12 +14,12 @@ import {
 import Lottie from 'lottie-react-native';
 import {useDispatch} from 'react-redux';
 import SignIn from '../sign-in';
+
 const SignInContainer = ({navigation}) => {
   const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(false);
 
   const userLoggedIn = id => {
-    console.log('id: ', id);
     dispatch({type: 'IS_USER_SIGN_IN', id: id});
   };
 
@@ -28,8 +28,8 @@ const SignInContainer = ({navigation}) => {
   }, []);
 
   const signInAsFacebook = async () => {
-    console.log('async: ');
     try {
+      setIsLoading(true);
       const result = await LoginManager.logInWithPermissions([
         'public_profile',
         'email',
@@ -53,6 +53,7 @@ const SignInContainer = ({navigation}) => {
     } catch (error) {
       console.log('error: ', error);
     }
+    setIsLoading(false);
   };
 
   const signInAsEmailPassword = async (email, password) => {
@@ -67,8 +68,6 @@ const SignInContainer = ({navigation}) => {
   };
 
   const signInAsGoogle = async () => {
-    console.log('signInAsGoogle: ');
-
     try {
       await GoogleSignin.hasPlayServices();
       setIsLoading(true);

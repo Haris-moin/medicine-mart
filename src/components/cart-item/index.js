@@ -1,8 +1,8 @@
 import React from 'react';
 import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import Entypo from 'react-native-vector-icons/Entypo';
-import {useDispatch, useSelector} from 'react-redux';
+
+import {useDispatch} from 'react-redux';
 const CartItem = ({product}) => {
   const dispatch = useDispatch();
   const addQuantity = () => {

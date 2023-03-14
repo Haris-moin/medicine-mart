@@ -46,6 +46,7 @@ const ProductDetail = ({navigation, route}) => {
     setProduct(item);
   }, [navigation, route.params]);
   const dispatch = useDispatch();
+
   const addToCart = () => {
     dispatch({type: 'ADD_TO_CART', id: product.id});
   };
@@ -55,7 +56,9 @@ const ProductDetail = ({navigation, route}) => {
   const subtractQuantity = () => {
     dispatch({type: 'SUB_QUANTITY', id: product.id});
   };
-  const {addedItems: cartItems} = useSelector(state => state);
+  const {
+    cartReducer: {addedItems: cartItems},
+  } = useSelector(state => state);
   const getQuantity = () => {
     const cartProduct = cartItems.find(({id}) => id === product.id);
     return cartProduct ? cartProduct.quantity : 0;

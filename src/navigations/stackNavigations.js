@@ -1,7 +1,5 @@
-import React, {useEffect} from 'react';
+import React, {useState} from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
-// import SignIn from '../components/auth/sign-in';
-import SignUp from '../components/auth/sign-up';
 import ProductDetails from '../components/product-details';
 import Products from '../components/products';
 import AntDesign from 'react-native-vector-icons/AntDesign';
@@ -13,31 +11,40 @@ import {NavigationContainer} from '@react-navigation/native';
 import SignInContainer from '../components/auth/signin-conatiner';
 import auth from '@react-native-firebase/auth';
 import SignUpContainer from '../components/auth/signup-container';
+import Lottie from 'lottie-react-native';
+import Checkout from '../components/check-out';
 
 const Stack = createStackNavigator();
 
 const StackNavigations = () => {
   const dispatch = useDispatch();
+  const [isLoading, setIsLoading] = useState(false);
 
   const isSignedInAsGoogle = async () => {
     const isLogedIn = await GoogleSignin.isSignedIn();
+    console.log('isLogedIn: ', isLogedIn);
     return isLogedIn;
   };
-  const userLoggedOutAction = async () => {
+  const userLoggedOut = async () => {
     dispatch({type: 'IS_USER_SIGN_IN', id: false});
   };
   const logout = async () => {
+    setIsLoading(true);
     if (await isSignedInAsGoogle()) {
       await GoogleSignin.hasPlayServices();
       await GoogleSignin.signOut();
     } else {
       await auth().signOut();
     }
-    userLoggedOutAction();
+    userLoggedOut();
+    setIsLoading(false);
   };
 
-  const {isUserLoggedIn} = useSelector(state => state);
+  // const {
+  //   authReducer: {isUserLoggedIn},
+  // } = useSelector(state => state);
 
+  const isUserLoggedIn = true;
   const AuthenticatedNavigation = () => {
     return (
       <Stack.Navigator
@@ -45,7 +52,6 @@ const StackNavigations = () => {
           headerStyle: {backgroundColor: '#d4c3f7'},
           headerTitleAlign: 'center',
           headerTintColor: '#8c6fa8',
-          contentStyle: {backgroundColor: '#fcdcbf'},
         }}>
         <Stack.Screen
           name="Home"
@@ -58,15 +64,8 @@ const StackNavigations = () => {
           }}
         />
         <Stack.Screen name="Details" component={ProductDetails} />
-        <Stack.Screen
-          name="Cart"
-          component={Cart}
-          options={{
-            headerStyle: {
-              backgroundColor: 'none',
-            },
-          }}
-        />
+        <Stack.Screen name="Cart" component={Cart} />
+        <Stack.Screen name="Checkout" component={Checkout} />
       </Stack.Navigator>
     );
   };
@@ -77,11 +76,16 @@ const StackNavigations = () => {
         screenOptions={{
           headerShown: false,
         }}>
-        <Stack.Screen name="SignUp" component={SignUpContainer} />
         <Stack.Screen name="SinIn" component={SignInContainer} />
+        <Stack.Screen name="SignUp" component={SignUpContainer} />
       </Stack.Navigator>
     );
   };
+  if (isLoading) {
+    return (
+      <Lottie source={require('../assets/97930-loading.json')} autoPlay loop />
+    );
+  }
   return (
     <NavigationContainer>
       {isUserLoggedIn ? <AuthenticatedNavigation /> : <AuthScreens />}

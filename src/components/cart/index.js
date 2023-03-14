@@ -2,7 +2,6 @@ import React from 'react';
 import {StyleSheet, Text, View, TouchableOpacity, FlatList} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-
 import {useSelector} from 'react-redux';
 import CartItem from '../cart-item';
 
@@ -25,7 +24,9 @@ const Cart = ({navigation, route}) => {
       ),
     });
   }, [navigation]);
-  const {addedItems: cartItems, total} = useSelector(state => state);
+  const {
+    cartReducer: {addedItems: cartItems, total},
+  } = useSelector(state => state);
 
   return (
     <LinearGradient
@@ -50,7 +51,9 @@ const Cart = ({navigation, route}) => {
             <Text style={styles.total}>Rs.{total}</Text>
           </View>
           <View style={styles.border} />
-          <TouchableOpacity style={styles.buyNowBtn}>
+          <TouchableOpacity
+            style={styles.buyNowBtn}
+            onPress={() => navigation.navigate('Checkout')}>
             <Text style={styles.buyNowBtnText}>Proceed to Checkout</Text>
           </TouchableOpacity>
         </View>

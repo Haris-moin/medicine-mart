@@ -9,7 +9,6 @@ const SignUpContainer = ({navigation}) => {
   const [isLoading, setIsLoading] = useState(false);
 
   const userLoggedIn = id => {
-    console.log('id: ', id);
     dispatch({type: 'IS_USER_SIGN_IN', id: id});
   };
 

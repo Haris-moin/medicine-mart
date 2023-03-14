@@ -12,10 +12,8 @@ import {SafeAreaView, StyleSheet} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import StackNavigations from './src/navigations/stackNavigations';
 import {Provider} from 'react-redux';
-import {createStore} from 'redux';
-import cartReducer from './src/store/reducers';
+import store from './src/store';
 
-const store = createStore(cartReducer);
 const App = () => {
   return (
     <SafeAreaView>
