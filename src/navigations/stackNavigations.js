@@ -40,11 +40,10 @@ const StackNavigations = () => {
     setIsLoading(false);
   };
 
-  // const {
-  //   authReducer: {isUserLoggedIn},
-  // } = useSelector(state => state);
+  const {
+    authReducer: {isUserLoggedIn},
+  } = useSelector(state => state);
 
-  const isUserLoggedIn = true;
   const AuthenticatedNavigation = () => {
     return (
       <Stack.Navigator
